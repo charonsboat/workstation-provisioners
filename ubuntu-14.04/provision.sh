@@ -6,7 +6,8 @@
 # Update software channel listings
 sudo apt-get update
 # OS updates
-sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y
+sudo apt-get upgrade -y
+sudo apt-get dist-upgrade -y
 
 # Install "base" packages
 sudo apt-get install -y xubuntu-desktop ubuntu-restricted-extras
