@@ -22,6 +22,7 @@ sudo add-apt-repository -y ppa:webupd8team/atom
 sudo add-apt-repository -y ppa:webupd8team/brackets
 sudo apt-add-repository ppa:remmina-ppa-team/remmina-next
 sudo add-apt-repository -y ppa:jerzy-kozera/zeal-ppa
+sudo add-apt-repository ppa:ondrej/php5
 
 sudo apt-get update
-sudo apt-get install sublime-text atom brackets remmina zeal
+sudo apt-get install sublime-text atom brackets remmina zeal lamp-server^
