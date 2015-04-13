@@ -26,3 +26,16 @@ sudo add-apt-repository ppa:ondrej/php5
 
 sudo apt-get update
 sudo apt-get install sublime-text atom brackets remmina zeal lamp-server^
+
+# Install Node.js related packages
+sudo apt-get install nodejs nodejs-legacy npm redis-server
+
+# Update npm
+sudo npm install -g npm
+# Delete the hash for npm since we need bash to find the new version
+hash -d npm
+
+# Install commonly used npm packages globally
+sudo npm install -g grunt-cli
+sudo npm install -g bower
+sudo npm install -g sails
