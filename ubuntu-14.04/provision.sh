@@ -27,6 +27,11 @@ sudo add-apt-repository ppa:ondrej/php5
 sudo apt-get update
 sudo apt-get install sublime-text atom brackets remmina zeal lamp-server^
 
+# Install additional PHP related packages/tools ################################
+
+# Install Composer
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin
+
 # Install Node.js related packages #############################################
 sudo apt-get install nodejs nodejs-legacy npm redis-server
 
