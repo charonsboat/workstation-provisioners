@@ -31,6 +31,7 @@ sudo apt-get install sublime-text atom brackets remmina zeal lamp-server^
 
 # Install Composer
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin
+alias composer='php composer.phar'
 
 # Install Node.js related packages #############################################
 sudo apt-get install nodejs nodejs-legacy npm redis-server
