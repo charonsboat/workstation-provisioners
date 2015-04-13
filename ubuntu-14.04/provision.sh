@@ -19,7 +19,8 @@ sudo update-initramfs -u
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-2
 sudo add-apt-repository -y ppa:webupd8team/atom
 sudo add-apt-repository -y ppa:webupd8team/brackets
+sudo apt-add-repository ppa:remmina-ppa-team/remmina-next
 sudo add-apt-repository -y ppa:jerzy-kozera/zeal-ppa
 
 sudo apt-get update
-sudo apt-get install sublime-text atom brackets zeal
+sudo apt-get install sublime-text atom brackets remmina zeal
