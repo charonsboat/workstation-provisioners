@@ -73,3 +73,9 @@ sudo apt-get install -y pidgin
 # Install media packages #######################################################
 
 sudo apt-get install -y audacious vlc audacity
+
+# Create commonly required directories
+
+cd ~/
+mkdir bin Projects src www .icons .themes
+mkdir -p Pictures/UI
