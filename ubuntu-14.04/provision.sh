@@ -83,3 +83,11 @@ sudo apt-get install -y audacious vlc audacity
 cd ~/
 mkdir bin Projects src www .icons .themes
 mkdir -p Pictures/UI
+
+# UI configuration settings ####################################################
+
+cd ~/.icons
+git clone https://github.com/NitruxSA/flattr-icons.git
+
+sudo ln -S ~/.icons /root/.icons
+sudo ln -S ~/.themes /root/.themes
