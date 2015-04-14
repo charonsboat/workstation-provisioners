@@ -66,6 +66,10 @@ sudo apt-get install -y kupfer keepassx conduit owncloud-client p7zip-full compi
 
 sudo apt-get install -y gimp inkscape krita rawtherapee
 
+# Install other Internet/social packages
+
+sudo apt-get install -y pidgin
+
 # Install media packages #######################################################
 
 sudo apt-get install -y audacious vlc audacity
