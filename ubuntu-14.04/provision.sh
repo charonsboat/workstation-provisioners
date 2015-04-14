@@ -29,7 +29,7 @@ sudo apt-get install sublime-text atom brackets remmina zeal lamp-server^
 
 # Install development tools ####################################################
 
-sudo apt-get install tilda git subversion meld virtualbox virtualbox-guest-additions-iso
+sudo apt-get install tilda git subversion meld virtualbox virtualbox-guest-additions-iso mysql-workbench filezilla
 
 # Install command line utilities I use #########################################
 
@@ -60,12 +60,12 @@ sudo npm install -g sails
 
 # Install other utlities #######################################################
 
-sudo apt-get install kupfer
+sudo apt-get install kupfer keepassx conduit owncloud-client compizconfig-settings-manager compiz-plugins
 
 # Install graphics utilities ###################################################
 
-sudo apt-get install gimp inkscape
+sudo apt-get install gimp inkscape krita
 
 # Install media packages #######################################################
 
-sudo apt-get install audacious vlc
+sudo apt-get install audacious vlc audacity
