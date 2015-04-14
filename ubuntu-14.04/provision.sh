@@ -29,7 +29,7 @@ sudo apt-get install -y sublime-text atom brackets remmina zeal lamp-server^
 
 # Install development tools ####################################################
 
-sudo apt-get install -y tilda git subversion meld monodevelop monodoc-manual virtualbox virtualbox-guest-additions-iso mysql-workbench filezilla
+sudo apt-get install -y tilda build-essential git subversion meld monodevelop monodoc-manual virtualbox virtualbox-guest-additions-iso mysql-workbench filezilla
 
 # Install command line utilities I use #########################################
 
