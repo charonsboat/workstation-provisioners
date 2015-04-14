@@ -29,7 +29,8 @@ sudo apt-get install -y sublime-text atom brackets remmina zeal lamp-server^
 
 # Install development tools ####################################################
 
-sudo apt-get install -y tilda build-essential git subversion meld monodevelop monodoc-manual virtualbox virtualbox-guest-additions-iso mysql-workbench filezilla
+sudo apt-get install -y tilda build-essential git subversion meld monodevelop monodoc-manual codeblocks virtualbox virtualbox-guest-additions-iso vagrant mysql-workbench filezilla
+sudo vagrant plugin install vagrant-linode
 
 # Install command line utilities I use #########################################
 
@@ -68,7 +69,7 @@ sudo apt-get install -y gimp inkscape krita rawtherapee
 
 # Install other Internet/social packages
 
-sudo apt-get install -y pidgin
+sudo apt-get install -y pidgin midori
 
 # Install media packages #######################################################
 
