@@ -31,6 +31,10 @@ sudo apt-get install sublime-text atom brackets remmina zeal lamp-server^
 
 sudo apt-get install tilda git subversion meld virtualbox virtualbox-guest-additions-iso
 
+# Install command line utilities I use #########################################
+
+sudo apt-get install realpath htop w3m
+
 # Install additional PHP related packages/tools ################################
 
 # Install Composer
