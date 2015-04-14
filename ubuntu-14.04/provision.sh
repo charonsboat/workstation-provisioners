@@ -35,6 +35,10 @@ sudo apt-get install tilda git subversion meld virtualbox virtualbox-guest-addit
 
 sudo apt-get install realpath htop w3m
 
+# Install additional services ##################################################
+
+sudo apt-get install openssh-server
+
 # Install additional PHP related packages/tools ################################
 
 # Install Composer
