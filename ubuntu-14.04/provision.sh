@@ -34,7 +34,7 @@ sudo vagrant plugin install vagrant-linode
 
 # Install command line utilities I use #########################################
 
-sudo apt-get install -y realpath htop w3m
+sudo apt-get install -y realpath htop w3m nano
 
 # Install additional services ##################################################
 
