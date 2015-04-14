@@ -27,6 +27,10 @@ sudo add-apt-repository ppa:ondrej/php5
 sudo apt-get update
 sudo apt-get install sublime-text atom brackets remmina zeal lamp-server^
 
+# Install development tools ####################################################
+
+sudo apt-get install tilda git subversion meld
+
 # Install additional PHP related packages/tools ################################
 
 # Install Composer
@@ -49,6 +53,10 @@ sudo npm install -g sails
 # Install other utlities #######################################################
 
 sudo apt-get install kupfer
+
+# Install graphics utilities ###################################################
+
+sudo apt-get install gimp inkscape
 
 # Install media packages #######################################################
 
