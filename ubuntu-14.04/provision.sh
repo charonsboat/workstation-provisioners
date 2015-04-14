@@ -29,7 +29,7 @@ sudo apt-get install -y sublime-text atom brackets remmina zeal lamp-server^
 
 # Install development tools ####################################################
 
-sudo apt-get install -y tilda git subversion meld virtualbox virtualbox-guest-additions-iso mysql-workbench filezilla
+sudo apt-get install -y tilda git subversion meld monodevelop monodoc-manual virtualbox virtualbox-guest-additions-iso mysql-workbench filezilla
 
 # Install command line utilities I use #########################################
 
@@ -60,11 +60,11 @@ sudo npm install -g sails
 
 # Install other utlities #######################################################
 
-sudo apt-get install -y kupfer keepassx conduit owncloud-client compizconfig-settings-manager compiz-plugins
+sudo apt-get install -y kupfer keepassx conduit owncloud-client p7zip-full compizconfig-settings-manager compiz-plugins
 
 # Install graphics utilities ###################################################
 
-sudo apt-get install -y gimp inkscape krita
+sudo apt-get install -y gimp inkscape krita rawtherapee
 
 # Install media packages #######################################################
 
