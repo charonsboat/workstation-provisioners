@@ -29,7 +29,7 @@ sudo apt-get install sublime-text atom brackets remmina zeal lamp-server^
 
 # Install development tools ####################################################
 
-sudo apt-get install tilda git subversion meld
+sudo apt-get install tilda git subversion meld virtualbox virtualbox-guest-additions-iso
 
 # Install additional PHP related packages/tools ################################
 
