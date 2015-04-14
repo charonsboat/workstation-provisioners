@@ -13,7 +13,7 @@ sudo apt-get dist-upgrade -y
 sudo apt-get install -y xubuntu-desktop ubuntu-restricted-extras
 
 # Switch Plymouth theme from Xubuntu to default 
-sudo update-alternatives --config default.plymouth
+sudo update-alternatives --set default.plymouth /lib/plymouth/themes/ubuntu-logo/ubuntu-logo.plymouth
 sudo update-initramfs -u
 
 # Install packages from third party software channels ##########################
