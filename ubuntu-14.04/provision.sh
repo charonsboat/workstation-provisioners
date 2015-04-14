@@ -23,14 +23,17 @@ sudo add-apt-repository -y ppa:webupd8team/brackets
 sudo apt-add-repository -y ppa:remmina-ppa-team/remmina-next
 sudo add-apt-repository -y ppa:jerzy-kozera/zeal-ppa
 sudo add-apt-repository -y ppa:ondrej/php5
+sudo add-apt-repository ppa:minecraft-installer-peeps/minecraft-installer
 
 sudo apt-get update
-sudo apt-get install -y sublime-text atom brackets remmina zeal lamp-server^
+sudo apt-get install -y sublime-text atom brackets remmina zeal lamp-server^ minecraft-installer
 
 # Install development tools ####################################################
 
 sudo apt-get install -y tilda build-essential git subversion meld monodevelop monodoc-manual codeblocks virtualbox virtualbox-guest-additions-iso vagrant mysql-workbench filezilla
 sudo vagrant plugin install vagrant-linode
+
+sudo apt-get instlal openjdk7-jdk openjdk7-jre
 
 # Install command line utilities I use #########################################
 
