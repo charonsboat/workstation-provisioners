@@ -25,19 +25,19 @@ sudo add-apt-repository -y ppa:jerzy-kozera/zeal-ppa
 sudo add-apt-repository -y ppa:ondrej/php5
 
 sudo apt-get update
-sudo apt-get install sublime-text atom brackets remmina zeal lamp-server^
+sudo apt-get install -y sublime-text atom brackets remmina zeal lamp-server^
 
 # Install development tools ####################################################
 
-sudo apt-get install tilda git subversion meld virtualbox virtualbox-guest-additions-iso mysql-workbench filezilla
+sudo apt-get install -y tilda git subversion meld virtualbox virtualbox-guest-additions-iso mysql-workbench filezilla
 
 # Install command line utilities I use #########################################
 
-sudo apt-get install realpath htop w3m
+sudo apt-get install -y realpath htop w3m
 
 # Install additional services ##################################################
 
-sudo apt-get install openssh-server
+sudo apt-get install -y openssh-server
 
 # Install additional PHP related packages/tools ################################
 
@@ -46,7 +46,7 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 alias composer='php composer.phar'
 
 # Install Node.js related packages #############################################
-sudo apt-get install nodejs nodejs-legacy npm redis-server
+sudo apt-get install -y nodejs nodejs-legacy npm redis-server
 
 # Update npm
 sudo npm install -g npm
@@ -60,12 +60,12 @@ sudo npm install -g sails
 
 # Install other utlities #######################################################
 
-sudo apt-get install kupfer keepassx conduit owncloud-client compizconfig-settings-manager compiz-plugins
+sudo apt-get install -y kupfer keepassx conduit owncloud-client compizconfig-settings-manager compiz-plugins
 
 # Install graphics utilities ###################################################
 
-sudo apt-get install gimp inkscape krita
+sudo apt-get install -y gimp inkscape krita
 
 # Install media packages #######################################################
 
-sudo apt-get install audacious vlc audacity
+sudo apt-get install -y audacious vlc audacity
