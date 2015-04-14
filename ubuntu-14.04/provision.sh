@@ -49,3 +49,7 @@ sudo npm install -g sails
 # Install other utlities #######################################################
 
 sudo apt-get install kupfer
+
+# Install media packages #######################################################
+
+sudo apt-get install audacious vlc
