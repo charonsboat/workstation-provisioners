@@ -89,5 +89,5 @@ mkdir -p Pictures/UI
 cd ~/.icons
 git clone https://github.com/NitruxSA/flattr-icons.git
 
-sudo ln -S /root/.icons ~/.icons 
-sudo ln -S /root/.themes ~/.themes 
+sudo ln -s /root/.icons ~/.icons 
+sudo ln -s /root/.themes ~/.themes 
