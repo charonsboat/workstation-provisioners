@@ -26,6 +26,11 @@ sudo add-apt-repository -y ppa:ondrej/php5
 sudo add-apt-repository -y ppa:minecraft-installer-peeps/minecraft-installer
 
 sudo apt-get update
+
+# Set MySQL password ahead of time for unattended install
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password'
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password'
+
 sudo apt-get install -y sublime-text atom brackets remmina zeal lamp-server^ minecraft-installer
 
 # Install development tools ####################################################
