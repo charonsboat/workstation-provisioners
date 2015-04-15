@@ -10,6 +10,9 @@ sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 
 # Install "base" packages ######################################################
+
+# Accept the ttf-mscorefonts-installer EULA ahead of time
+sudo debconf-set-selections <<< "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"
 sudo apt-get install -y xubuntu-desktop ubuntu-restricted-extras
 
 # Switch Plymouth theme from Xubuntu to default 
