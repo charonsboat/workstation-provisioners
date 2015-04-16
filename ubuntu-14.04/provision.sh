@@ -5,6 +5,9 @@ export DEBIAN_FRONTEND=noninteractive
 # Execute the Fix Ubuntu script to ensure additional privacy.
 ./fixubuntu.sh
 
+# Retrieve and extract Consolas because it is my favorite programming font.
+./consolas.sh
+
 # Update software channel listings
 sudo apt-get update
 # OS updates
