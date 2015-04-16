@@ -54,7 +54,7 @@ sudo apt-get install -y openssh-server
 
 # Install additional PHP related packages/tools ################################
 
-sudo apt-get install php5-cli
+sudo apt-get install -y php5-cli
 
 # Install Composer
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin
