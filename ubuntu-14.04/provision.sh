@@ -32,6 +32,9 @@ sudo apt-add-repository -y ppa:remmina-ppa-team/remmina-next
 sudo add-apt-repository -y ppa:jerzy-kozera/zeal-ppa
 sudo add-apt-repository -y ppa:ondrej/php5
 sudo add-apt-repository -y ppa:minecraft-installer-peeps/minecraft-installer
+# The following two install a custom libnotify-bin and configuration tool
+sudo add-apt-repository -y ppa:leolik/leolik
+sudo add-apt-repository -y ppa:amandeepgrewal/notifyosdconfig
 
 sudo apt-get update
 
@@ -39,6 +42,9 @@ sudo apt-get update
 sudo -E apt-get -q -y install mysql-server
 
 sudo apt-get install -y sublime-text atom brackets remmina zeal lamp-server^ minecraft-installer
+
+sudo apt-get install -y libnotify-bin notifyosdconfig
+sudo apt-get upgrade -y
 
 # Install development tools ####################################################
 
