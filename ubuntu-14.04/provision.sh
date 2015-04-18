@@ -25,6 +25,7 @@ sudo update-alternatives --set default.plymouth /lib/plymouth/themes/ubuntu-logo
 sudo update-initramfs -u
 
 # Install packages from third party software channels ##########################
+sudo add-apt-repository -y ppa:tsvetko.tsvetkov/cinnamon
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-2
 sudo add-apt-repository -y ppa:webupd8team/atom
 sudo add-apt-repository -y ppa:webupd8team/brackets
@@ -41,7 +42,7 @@ sudo apt-get update
 # Set MySQL password ahead of time for unattended install
 sudo -E apt-get -q -y install mysql-server
 
-sudo apt-get install -y sublime-text atom brackets remmina zeal lamp-server^ minecraft-installer
+sudo apt-get install -y cinnamon sublime-text atom brackets remmina zeal lamp-server^ minecraft-installer
 
 sudo apt-get install -y libnotify-bin notifyosdconfig
 pkill notifyosd
