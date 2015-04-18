@@ -110,5 +110,11 @@ mkdir -p Pictures/UI
 cd ~/.icons
 git clone https://github.com/NitruxSA/flattr-icons.git
 
+cd ~/.themes
+git clone https://github.com/wfpaisa/Plane-Gtk3.git
+git clone https://github.com/wfpaisa/Plane-Gtk3-White.git
+
+cd ~/
+
 sudo ln -s /root/.icons ~/.icons 
 sudo ln -s /root/.themes ~/.themes 
