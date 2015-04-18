@@ -44,6 +44,8 @@ sudo -E apt-get -q -y install mysql-server
 sudo apt-get install -y sublime-text atom brackets remmina zeal lamp-server^ minecraft-installer
 
 sudo apt-get install -y libnotify-bin notifyosdconfig
+pkill notifyosd
+# NotifyOSD will show as an upgrade to an existing package.
 sudo apt-get upgrade -y
 
 # Install development tools ####################################################
