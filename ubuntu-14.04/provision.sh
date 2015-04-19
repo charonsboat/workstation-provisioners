@@ -110,6 +110,7 @@ mkdir -p Pictures/UI
 
 cd ~/.icons
 git clone https://github.com/NitruxSA/flattr-icons.git
+git clone https://github.com/xcjs/flattr-dark.git
 
 cd ~/.themes
 git clone https://github.com/wfpaisa/Plane-Gtk3.git
