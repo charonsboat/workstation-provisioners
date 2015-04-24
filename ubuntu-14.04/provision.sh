@@ -18,7 +18,7 @@ sudo apt-get dist-upgrade -y
 
 # Accept the ttf-mscorefonts-installer EULA ahead of time
 sudo debconf-set-selections <<< "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"
-sudo apt-get install -y ubuntu-restricted-extras unity-tweak-tool gnome-tweak-tool network-manager-openvpn-gnome
+sudo apt-get install -y gksu ubuntu-restricted-extras unity-tweak-tool gnome-tweak-tool network-manager-openvpn-gnome
 
 # Install packages from third party software channels ##########################
 sudo add-apt-repository -y ppa:tsvetko.tsvetkov/cinnamon
