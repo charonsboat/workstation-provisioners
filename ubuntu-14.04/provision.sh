@@ -114,8 +114,8 @@ git clone https://github.com/wfpaisa/Plane-Gtk3-White.git
 
 cd ~/
 
-sudo ln -s /root/.icons ~/.icons 
-sudo ln -s /root/.themes ~/.themes 
+sudo ln -s ~/.icons /root/.icons
+sudo ln -s ~/.themes /root/.themes 
 
 # Custom binaries ##############################################################
 
