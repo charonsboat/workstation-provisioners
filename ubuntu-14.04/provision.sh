@@ -50,7 +50,7 @@ sudo apt-get upgrade -y
 sudo apt-get install -y tilda build-essential git subversion meld monodevelop monodoc-manual codeblocks virtualbox virtualbox-guest-additions-iso vagrant mysql-workbench filezilla
 sudo vagrant plugin install vagrant-linode
 
-sudo apt-get instlal openjdk7-jdk openjdk7-jre
+sudo apt-get install openjdk7-jdk openjdk7-jre
 
 # Install command line utilities I use #########################################
 
