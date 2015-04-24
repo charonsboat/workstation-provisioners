@@ -18,11 +18,7 @@ sudo apt-get dist-upgrade -y
 
 # Accept the ttf-mscorefonts-installer EULA ahead of time
 sudo debconf-set-selections <<< "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"
-sudo apt-get install -y xubuntu-desktop xfce4-whiskermenu-plugin ubuntu-restricted-extras unity-tweak-tool gnome-tweak-tool network-manager-openvpn-gnome
-
-# Switch Plymouth theme from Xubuntu to default 
-sudo update-alternatives --set default.plymouth /lib/plymouth/themes/ubuntu-logo/ubuntu-logo.plymouth
-sudo update-initramfs -u
+sudo apt-get install -y ubuntu-restricted-extras unity-tweak-tool gnome-tweak-tool network-manager-openvpn-gnome
 
 # Install packages from third party software channels ##########################
 sudo add-apt-repository -y ppa:tsvetko.tsvetkov/cinnamon
