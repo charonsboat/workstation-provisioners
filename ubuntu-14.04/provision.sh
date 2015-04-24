@@ -116,3 +116,38 @@ cd ~/
 
 sudo ln -s /root/.icons ~/.icons 
 sudo ln -s /root/.themes ~/.themes 
+
+# Custom binaries ##############################################################
+
+cd ~/bin
+
+# JetBrains
+
+INTELLIJDOWNLOAD=ideaIU-14.1.2.tar.gz
+PHPSTORMDOWNLOAD=PhpStorm-8.0.3.tar.gz
+
+INTELLIJINSTALL=intellij-ide
+PHPSTORMINSTALL=phpstorm-ide
+
+wget https://download.jetbrains.com/idea/$INTELLIJDOWNLOAD
+mkdir $INTELLIJINSTALL
+tar -zxvf ideaIU-14.1.2.tar.gz --strip-components=1 -C intellij-ide
+
+wget https://download.jetbrains.com/webide/$PHPSTORMDOWNLOAD
+mkdir $PHPSTORMINSTALL
+tar -zxvf $PHPSTORMDOWNLOAD --strip-components=1 -C phpstorm-ide
+
+rm $INTELLIJDOWNLOAD $PHPSTORMDOWNLOAD
+
+# Android
+
+ANDROIDSTUDIODOWNLOAD=android-studio-ide-135.1740770-linux.zip
+ANDROIDSDKDOWNLOAD=android-sdk_r24.1.2-linux.tgz
+
+wget https://dl.google.com/dl/android/studio/ide-zips/1.1.0/$ANDROIDSTUDIODOWNLOAD
+unzip $ANDROIDSTUDIODOWNLOAD
+
+wget http://dl.google.com/android/$ANDROIDSDKDOWNLOAD
+tar -zxvf $ANDROIDSDKDOWNLOAD
+
+rm $ANDROIDSTUDIODOWNLOAD $ANDROIDSDKDOWNLOAD
