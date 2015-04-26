@@ -32,13 +32,16 @@ sudo add-apt-repository -y ppa:minecraft-installer-peeps/minecraft-installer
 # The following two install a custom libnotify-bin and configuration tool
 sudo add-apt-repository -y ppa:leolik/leolik
 sudo add-apt-repository -y ppa:amandeepgrewal/notifyosdconfig
+# Grab the latest version of Virtualbox from the Oracle repository.
+wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian trusty contrib" >> /etc/apt/sources.list.d/virtualbox.list'
 
 sudo apt-get update
 
 # Set MySQL password ahead of time for unattended install
 sudo -E apt-get -q -y install mysql-server
 
-sudo apt-get install -y cinnamon sublime-text atom brackets remmina zeal lamp-server^ minecraft-installer
+sudo apt-get install -y cinnamon sublime-text atom brackets remmina zeal lamp-server^ minecraft-installer virtualbox-4.3
 
 sudo apt-get install -y libnotify-bin notifyosdconfig
 pkill notifyosd
@@ -47,7 +50,7 @@ sudo apt-get upgrade -y
 
 # Install development tools ####################################################
 
-sudo apt-get install -y tilda build-essential git git-svn subversion meld monodevelop monodoc-manual codeblocks virtualbox virtualbox-guest-additions-iso vagrant mysql-workbench filezilla
+sudo apt-get install -y tilda build-essential git git-svn subversion meld monodevelop monodoc-manual codeblocks vagrant mysql-workbench filezilla
 sudo vagrant plugin install vagrant-linode
 
 sudo apt-get install openjdk7-jdk openjdk7-jre
