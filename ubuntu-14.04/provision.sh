@@ -54,7 +54,7 @@ sudo apt-get install openjdk7-jdk openjdk7-jre
 
 # Install command line utilities I use #########################################
 
-sudo apt-get install -y realpath htop w3m nano
+sudo apt-get install -y screen realpath htop w3m nano
 
 # Install additional services ##################################################
 
