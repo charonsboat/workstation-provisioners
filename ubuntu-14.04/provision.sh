@@ -47,7 +47,7 @@ sudo apt-get upgrade -y
 
 # Install development tools ####################################################
 
-sudo apt-get install -y tilda build-essential git subversion meld monodevelop monodoc-manual codeblocks virtualbox virtualbox-guest-additions-iso vagrant mysql-workbench filezilla
+sudo apt-get install -y tilda build-essential git git-svn subversion meld monodevelop monodoc-manual codeblocks virtualbox virtualbox-guest-additions-iso vagrant mysql-workbench filezilla
 sudo vagrant plugin install vagrant-linode
 
 sudo apt-get install openjdk7-jdk openjdk7-jre
