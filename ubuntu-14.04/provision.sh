@@ -93,6 +93,10 @@ sudo apt-get install -y gimp inkscape krita rawtherapee
 
 # Install other Internet/social packages
 
+CHROMESTABLEFILE=google-chrome-stable_current_amd64.deb
+wget https://dl.google.com/linux/direct/$CHROMESTABLEFILE | sudo dpkg -i $CHROMESTABLEFILE
+rm $CHROMESTABLEFILE 
+
 sudo apt-get install -y pidgin midori
 
 # Install media packages #######################################################
