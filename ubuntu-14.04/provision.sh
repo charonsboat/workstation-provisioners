@@ -1,5 +1,11 @@
 #!/bin/bash
 
+LOGNAME=provision.log
+# Copy STDOUT to a log
+exec >  >(tee -a $LOGNAME)
+# Include STDERR to the same log
+exec 2> >(tee -a $LOGNAME >&2)
+
 export DEBIAN_FRONTEND=noninteractive
 
 # Execute the Fix Ubuntu script to ensure additional privacy.
