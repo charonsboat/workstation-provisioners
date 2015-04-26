@@ -107,6 +107,11 @@ mkdir -p Pictures/UI
 
 # UI configuration settings ####################################################
 
+# Install the Numix theme resources since I use elements of that particular theme.
+sudo add-apt-repository -y ppa:numix/ppa
+sudo apt-get update
+sudo apt-get install -y numix-gtk-theme numix-icon-theme-circle install numix-wallpaper-notd
+
 cd ~/.icons
 git clone https://github.com/NitruxSA/flattr-icons.git
 git clone https://github.com/xcjs/flattr-dark.git
