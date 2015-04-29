@@ -178,3 +178,8 @@ cd ~/bin
 ln -s intellij-ide/bin/idea.sh intellij
 ln -s phpstorm-ide/bin/phpstorm.sh phpstorm
 ln -s android-studio/bin/studio.sh androidstudio
+
+# Install Soda HiDPI for machines that may require it
+
+cd ~/.config/sublime-text-2/Packages
+git clone git://github.com/Antwan86/soda-theme-hidpi.git "Theme - Soda HiDPI"
