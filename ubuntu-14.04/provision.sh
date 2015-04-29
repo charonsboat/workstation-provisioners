@@ -150,7 +150,7 @@ PHPSTORMINSTALL=phpstorm-ide
 
 wget https://download.jetbrains.com/idea/$INTELLIJDOWNLOAD
 mkdir $INTELLIJINSTALL
-tar -zxvf ideaIU-14.1.2.tar.gz --strip-components=1 -C intellij-ide
+tar -zxvf $INTELLIJDOWNLOAD --strip-components=1 -C intellij-ide
 
 wget https://download.jetbrains.com/webide/$PHPSTORMDOWNLOAD
 mkdir $PHPSTORMINSTALL
