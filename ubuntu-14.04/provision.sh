@@ -181,5 +181,7 @@ ln -s android-studio/bin/studio.sh androidstudio
 
 # Install Soda HiDPI for machines that may require it
 
-cd ~/.config/sublime-text-2/Packages
+SUBLIMEPACKAGES=~/.config/sublime-text-2/Packages
+mkdir -p $SUBLIMEPACKAGES
+cd $SUBLIMEPACKAGES
 git clone git://github.com/Antwan86/soda-theme-hidpi.git "Theme - Soda HiDPI"
