@@ -15,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.box = "fundpuls/windows-81"
 
     # set up Windows communicator
-    config.vm.communicator :winrm
+    config.vm.communicator = "winrm"
 
     # settings for VirtualBox provider
     config.vm.provider "virtualbox" do |v|
