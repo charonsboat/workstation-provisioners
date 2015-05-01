@@ -1,0 +1,25 @@
+# Vim
+# vim: set filetype=ruby:
+# vim: set ft=ruby:
+#
+# Emacs
+# -*- mode: ruby; -*-
+
+VAGRANTFILE_API_VERSION = "2"
+MAX_MEMORY = 1024
+SHOW_GUI = true
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+    # Vagrant box to build on
+    config.vm.box = "ubuntu/trusty64"
+
+    # settings for VirtualBox provider
+    config.vm.provider "virtualbox" do |v|
+        v.memory = MAX_MEMORY
+        v.gui = SHOW_GUI
+    end
+
+    # call provisioner
+    config.vm.provision :shell, path: "./provision.sh"
+end
