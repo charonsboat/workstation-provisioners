@@ -53,7 +53,10 @@ sudo apt-get upgrade -y
 
 # Install development tools ####################################################
 
-sudo apt-get install -y sublime-text-2 sublime-text-3 atom brackets zeal virtualbox-4.3
+## for sublime text 3, change below package to: sublime-text-installer
+sudo apt-get install -y sublime-text
+
+sudo apt-get install -y atom brackets zeal virtualbox-4.3
 sudo apt-get install -y build-essential git git-svn subversion meld monodevelop monodoc-manual codeblocks vagrant filezilla
 sudo vagrant plugin install vagrant-linode
 
