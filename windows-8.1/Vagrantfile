@@ -12,8 +12,8 @@ SHOW_GUI = true
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Vagrant box to build on
-    config.vm.box = "<enter box name here>"
-    config.vm.box_url = "<enter box url here>"
+    config.vm.box = "<enter box name>"
+    config.vm.box_url = "<enter box url>"
 
     # set up Windows communicator
     config.vm.communicator = "winrm"
