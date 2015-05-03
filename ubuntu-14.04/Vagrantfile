@@ -7,7 +7,7 @@
 
 VAGRANTFILE_API_VERSION = "2"
 MAX_MEMORY = 1024
-SHOW_GUI = true
+SHOW_GUI = false
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
@@ -21,5 +21,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     # call provisioner
-    config.vm.provision :shell, path: "./provision.sh"
+    config.vm.provision :shell, inline: "cd /vagrant && ./provision.sh", run: "always"
 end

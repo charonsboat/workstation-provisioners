@@ -1,104 +1,81 @@
 #!/bin/bash
 
-LOGNAME=provision.log
+
+log="./provision.log"
 # Copy STDOUT to a log
-exec >  >(tee -a $LOGNAME)
+exec >  >(tee -a ${log})
 # Include STDERR to the same log
-exec 2> >(tee -a $LOGNAME >&2)
+exec 2> >(tee -a ${log} >&2)
 
 export DEBIAN_FRONTEND=noninteractive
 
+# using a tmp dir to store any downloaded files or logs
+# /var/tmp files are supposed to persist even on reboot
+tmp="/var/tmp"
+
+lib="./lib"
+conf="./conf"
+
 # Execute the Fix Ubuntu script to ensure additional privacy.
-./fixubuntu.sh
+${lib}/fixubuntu.sh
 
 # Retrieve and extract Consolas because it is my favorite programming font.
-./consolas.sh
+${lib}/consolas.sh
 
-# Update software channel listings
-sudo apt-get update
-# OS updates
-sudo apt-get upgrade -y
-sudo apt-get dist-upgrade -y
+# load lst-reader function, read_lst()
+source ${lib}/utilities.sh
 
-# Install "base" packages ######################################################
+
+ppas=$(read_lst "${conf}/ppas.lst")
+ppa_packages=$(read_lst "${conf}/ppa-packages.lst")
+packages=$(read_lst "${conf}/packages.lst")
+
+
+echo ; echo ;
+echo "1. Add Personal Package Archives ========================================"
+printf %s "${ppas}" | while read -r ppa || [ -n "${ppa}" ]; do
+    echo "Adding Package Archive: ${ppa}"
+    add-apt-repository -y ${ppa} > /dev/null
+done
+
+
+echo "Adding Package Archive: VirtualBox"
+# Grab the latest version of Virtualbox from the Oracle repository.
+wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | apt-key add -
+echo "deb http://download.virtualbox.org/virtualbox/debian trusty contrib" >> /etc/apt/sources.list.d/virtualbox.list
+
+
+echo ; echo ;
+echo "2. Refresh Package Archives ============================================="
+apt-get update -qq -y > /dev/null
+
+
+echo ; echo ;
+echo "3. Install Updates ======================================================"
+apt-get upgrade -qq -y > /dev/null && apt-get dist-upgrade -qq -y > /dev/null
+
+
+echo ; echo ;
+echo "4. Install Selected Packages ============================================"
+printf %s "${packages}" | while read -r package || [ -n "${package}" ]; do
+    echo "Installing Package: ${package}"
+    apt-get install -qq -y ${package} > /dev/null
+done
+
 
 # Accept the ttf-mscorefonts-installer EULA ahead of time
-sudo debconf-set-selections <<< "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"
-sudo apt-get install -y gksu ubuntu-restricted-extras unity-tweak-tool gnome-tweak-tool network-manager-openvpn-gnome
+debconf-set-selections <<< "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"
 
-# Install packages from third party software channels ##########################
-sudo add-apt-repository -y ppa:tsvetko.tsvetkov/cinnamon
-sudo add-apt-repository -y ppa:webupd8team/sublime-text-2
-sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
-sudo add-apt-repository -y ppa:webupd8team/atom
-sudo add-apt-repository -y ppa:webupd8team/brackets
-sudo apt-add-repository -y ppa:remmina-ppa-team/remmina-next
-sudo add-apt-repository -y ppa:jerzy-kozera/zeal-ppa
-sudo add-apt-repository -y ppa:keepassx/ppa
-# The following two install a custom libnotify-bin and configuration tool
-sudo add-apt-repository -y ppa:leolik/leolik
-sudo add-apt-repository -y ppa:amandeepgrewal/notifyosdconfig
-# Grab the latest version of Virtualbox from the Oracle repository.
-wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
-sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian trusty contrib" >> /etc/apt/sources.list.d/virtualbox.list'
-
-sudo apt-get update
-
-sudo apt-get install -y cinnamon remmina keepassx
-
-sudo apt-get install -y libnotify-bin notifyosdconfig
-pkill notifyosd
-# NotifyOSD will show as an upgrade to an existing package.
-sudo apt-get upgrade -y
-
-# Install development tools ####################################################
-
-## for sublime text 3, change below package to: sublime-text-installer
-sudo apt-get install -y sublime-text
-
-sudo apt-get install -y atom brackets zeal virtualbox-4.3
-sudo apt-get install -y build-essential git git-svn subversion meld monodevelop monodoc-manual codeblocks vagrant filezilla
-sudo vagrant plugin install vagrant-linode
-
-sudo apt-get install -y openjdk-7-jdk openjdk-7-jre
-
-# Install command line utilities I use #########################################
-
-sudo apt-get install -y screen realpath htop w3m
-
-# Install additional services ##################################################
-
-sudo apt-get install -y openssh-server
-
-# Install other utlities #######################################################
-
-sudo apt-get install -y p7zip-full
-
-# Install graphics utilities ###################################################
-
-sudo apt-get install -y gimp inkscape
 
 # Install other Internet/social packages
-
 CHROMESTABLEFILE=google-chrome-stable_current_amd64.deb
-wget https://dl.google.com/linux/direct/$CHROMESTABLEFILE | sudo dpkg -i $CHROMESTABLEFILE
+wget https://dl.google.com/linux/direct/$CHROMESTABLEFILE | dpkg -i $CHROMESTABLEFILE > /dev/null
 rm $CHROMESTABLEFILE
 
-# Install media packages #######################################################
-
-sudo apt-get install -y audacious vlc audacity
 
 # Create commonly required directories
-
 cd ~/
 mkdir bin Projects .icons .themes
-
-# UI configuration settings ####################################################
-
-# Install the Numix theme resources since I use elements of that particular theme.
-sudo add-apt-repository -y ppa:numix/ppa
-sudo apt-get update
-sudo apt-get install -y numix-gtk-theme numix-icon-theme-circle install numix-wallpaper-notd
 
 cd ~/.icons
 git clone https://github.com/NitruxSA/flattr-icons.git
@@ -109,8 +86,9 @@ git clone https://github.com/wfpaisa/Plane-Gtk3.git
 git clone https://github.com/wfpaisa/Plane-Gtk3-White.git
 
 cd ~/
-sudo ln -s .icons /root/.icons
-sudo ln -s .themes /root/.themes
+ln -s ./.icons /root/.icons
+ln -s ./.themes /root/.themes
+
 
 # Custom binaries ##############################################################
 
@@ -121,15 +99,15 @@ cd ~/bin
 ANDROIDSTUDIODOWNLOAD=android-studio-ide-135.1740770-linux.zip
 ANDROIDSDKDOWNLOAD=android-sdk_r24.1.2-linux.tgz
 
-wget https://dl.google.com/dl/android/studio/ide-zips/1.1.0/$ANDROIDSTUDIODOWNLOAD
-unzip $ANDROIDSTUDIODOWNLOAD
+wget https://dl.google.com/dl/android/studio/ide-zips/1.1.0/$ANDROIDSTUDIODOWNLOAD > /dev/null
+unzip $ANDROIDSTUDIODOWNLOAD > /dev/null
 
-wget http://dl.google.com/android/$ANDROIDSDKDOWNLOAD
-tar -zxvf $ANDROIDSDKDOWNLOAD
+wget http://dl.google.com/android/$ANDROIDSDKDOWNLOAD > /dev/null
+tar -zxvf $ANDROIDSDKDOWNLOAD > /dev/null
 
 rm $ANDROIDSTUDIODOWNLOAD $ANDROIDSDKDOWNLOAD
 
 # Setup symlinks to make applications executable from path (Ubuntu ~/.profile
 # adds ~/bin to path if it exists.
 
-ln -s android-studio/bin/studio.sh androidstudio
+ln -s ./android-studio/bin/studio.sh ./androidstudio
