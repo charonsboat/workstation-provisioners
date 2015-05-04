@@ -69,7 +69,7 @@ sudo grep -q "#\?PermitEmptyPasswords[ \t].*" /etc/ssh/sshd_config && sudo sed -
 
 # add Vagrant public key
 mkdir -p "${HOME}/.ssh"
-wget "https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub" -O - | - >> "${HOME}/.ssh/authorized_keys" > /dev/null
+wget "https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub" -O - >> "${HOME}/.ssh/authorized_keys" > /dev/null
 
 # make sure permissions and ownership are correct
 chmod -R 0700 "${HOME}/.ssh"
