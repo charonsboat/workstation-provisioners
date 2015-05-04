@@ -27,7 +27,6 @@ source ${lib}/utilities.sh
 
 
 ppas=$(read_lst "${conf}/ppas.lst")
-ppa_packages=$(read_lst "${conf}/ppa-packages.lst")
 packages=$(read_lst "${conf}/packages.lst")
 
 
@@ -35,31 +34,31 @@ echo ; echo ;
 echo "1. Add Personal Package Archives ========================================"
 printf %s "${ppas}" | while read -r ppa || [ -n "${ppa}" ]; do
     echo "Adding Package Archive: ${ppa}"
-    add-apt-repository -y ${ppa} > /dev/null
+    sudo -E add-apt-repository -y ${ppa} > /dev/null
 done
 
 
 echo "Adding Package Archive: VirtualBox"
 # Grab the latest version of Virtualbox from the Oracle repository.
-wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | apt-key add -
-echo "deb http://download.virtualbox.org/virtualbox/debian trusty contrib" >> /etc/apt/sources.list.d/virtualbox.list
+wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib' >> /etc/apt/sources.list.d/virtualbox.list"
 
 
 echo ; echo ;
 echo "2. Refresh Package Archives ============================================="
-apt-get update -qq -y > /dev/null
+sudo -E apt-get update -qq -y > /dev/null
 
 
 echo ; echo ;
 echo "3. Install Updates ======================================================"
-apt-get upgrade -qq -y > /dev/null && apt-get dist-upgrade -qq -y > /dev/null
+sudo -E apt-get upgrade -qq -y > /dev/null && sudo -E apt-get dist-upgrade -qq -y > /dev/null
 
 
 echo ; echo ;
 echo "4. Install Selected Packages ============================================"
 printf %s "${packages}" | while read -r package || [ -n "${package}" ]; do
     echo "Installing Package: ${package}"
-    apt-get install -qq -y ${package} > /dev/null
+    sudo -E apt-get install -qq -y ${package} > /dev/null
 done
 
 
@@ -69,13 +68,13 @@ debconf-set-selections <<< "ttf-mscorefonts-installer msttcorefonts/accepted-msc
 
 # Install other Internet/social packages
 CHROMESTABLEFILE=google-chrome-stable_current_amd64.deb
-wget https://dl.google.com/linux/direct/$CHROMESTABLEFILE | dpkg -i $CHROMESTABLEFILE > /dev/null
+wget https://dl.google.com/linux/direct/$CHROMESTABLEFILE | sudo -E dpkg -i $CHROMESTABLEFILE > /dev/null
 rm $CHROMESTABLEFILE
 
 
 # Create commonly required directories
 cd ~/
-mkdir bin Projects .icons .themes
+mkdir -p bin Projects .icons .themes
 
 cd ~/.icons
 git clone https://github.com/NitruxSA/flattr-icons.git
@@ -86,8 +85,8 @@ git clone https://github.com/wfpaisa/Plane-Gtk3.git
 git clone https://github.com/wfpaisa/Plane-Gtk3-White.git
 
 cd ~/
-ln -s ./.icons /root/.icons
-ln -s ./.themes /root/.themes
+sudo ln -s ./.icons /root/.icons
+sudo ln -s ./.themes /root/.themes
 
 
 # Custom binaries ##############################################################
