@@ -3,9 +3,9 @@
 
 log="./provision.log"
 # Copy STDOUT to a log
-exec >  >(tee -a ${log})
+exec > >(tee -a ${log})
 # Include STDERR to the same log
-exec 2> >(tee -a ${log} >&2)
+exec 2>&1
 
 export DEBIAN_FRONTEND=noninteractive
 
@@ -46,19 +46,19 @@ sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_re
 
 echo ; echo ;
 echo "2. Refresh Package Archives ============================================="
-sudo -E apt-get update -qq -y > /dev/null
+sudo -E apt-get update -y > /dev/null
 
 
 echo ; echo ;
 echo "3. Install Updates ======================================================"
-sudo -E apt-get upgrade -qq -y > /dev/null && sudo -E apt-get dist-upgrade -qq -y > /dev/null
+sudo -E apt-get upgrade -y > /dev/null && sudo -E apt-get dist-upgrade -y > /dev/null
 
 
 echo ; echo ;
 echo "4. Install Selected Packages ============================================"
 printf %s "${packages}" | while read -r package || [ -n "${package}" ]; do
     echo "Installing Package: ${package}"
-    sudo -E apt-get install -qq -y ${package} > /dev/null
+    sudo -E apt-get install -y ${package} > /dev/null
 done
 
 
