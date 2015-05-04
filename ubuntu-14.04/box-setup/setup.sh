@@ -3,7 +3,7 @@
 #### COPY ALL STDOUT & STDERR TO LOG FILE ######################################
 
 # Copy stdout to a log file
-exec > >(tee --append ${log})
+exec > >(tee --append "${HOME}/box-setup.log")
 
 # Redirect stderr to stdout so it can also be copied to the log file
 exec 2>&1
