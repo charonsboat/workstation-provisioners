@@ -40,7 +40,7 @@ done
 
 echo "Adding Package Archive: VirtualBox"
 # Grab the latest version of Virtualbox from the Oracle repository.
-wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O - | sudo apt-key add -
 sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib' >> /etc/apt/sources.list.d/virtualbox.list"
 
 
@@ -74,7 +74,7 @@ rm $CHROMESTABLEFILE
 
 # Create commonly required directories
 cd ~/
-mkdir -p bin Projects .icons .themes
+mkdir -p "bin" "Projects" ".icons" ".themes"
 
 cd ~/.icons
 git clone https://github.com/NitruxSA/flattr-icons.git

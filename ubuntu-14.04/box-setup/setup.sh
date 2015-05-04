@@ -1,5 +1,14 @@
 #!/bin/bash
 
+#### ADD USER TO SUDOERS FILE ##################################################
+
+# backup sudoers file
+sudo cp /etc/sudoers /etc/sudoers.backup
+
+# add current user to sudoers file
+sudo grep -q "${USER}[ \t].*" /etc/sudoers && sudo sed -i "s/${USER}[ \t].*/${USER} ALL=(ALL) NOPASSWD: ALL/g" /etc/sudoers || echo "${USER} ALL=(ALL) NOPASSWD: ALL" | sudo tee --append /etc/sudoers > /dev/null
+
+
 #### RUN SYSTEM UPDATES ########################################################
 
 # update the system
@@ -40,8 +49,23 @@ rm VBoxGuestAdditions_${vb_version}.iso
 # install openssh
 sudo apt-get install -y openssh-server
 
+# backup ssh configuration
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.backup
+
 # configure ssh
-sudo grep -q "#\?Port[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?Port[ \t].*/Port 22/g" /etc/ssh/sshd_config || sudo echo "Port 22" >> /etc/ssh/sshd_config
-sudo grep -q "#\?PubkeyAuthentication[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?PubkeyAuthentication[ \t].*/PubkeyAuthentication yes/g" /etc/ssh/sshd_config || sudo echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config
-sudo grep -q "#\?AuthorizedKeysFile[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?AuthorizedKeysFile[ \t].*/AuthorizedKeysFile %h\/.ssh\/authorized_keys/g" /etc/ssh/sshd_config || sudo echo "AuthorizedKeysFile %h/.ssh/authorized_keys" >> /etc/ssh/sshd_config
-sudo grep -q "#\?PermitEmptyPasswords[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?PermitEmptyPasswords[ \t].*/PermitEmptyPasswords no/g" /etc/ssh/sshd_config || sudo echo "PermitEmptyPasswords no" >> /etc/ssh/sshd_config
+sudo grep -q "#\?Port[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?Port[ \t].*/Port 22/g" /etc/ssh/sshd_config || echo "Port 22" | sudo tee --append /etc/ssh/sshd_config > /dev/null
+sudo grep -q "#\?PubkeyAuthentication[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?PubkeyAuthentication[ \t].*/PubkeyAuthentication yes/g" /etc/ssh/sshd_config || echo "PubkeyAuthentication yes" | sudo tee --append /etc/ssh/sshd_config > /dev/null
+sudo grep -q "#\?AuthorizedKeysFile[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?AuthorizedKeysFile[ \t].*/AuthorizedKeysFile %h\/.ssh\/authorized_keys/g" /etc/ssh/sshd_config || echo "AuthorizedKeysFile %h/.ssh/authorized_keys" | sudo tee --append /etc/ssh/sshd_config > /dev/null
+sudo grep -q "#\?PermitEmptyPasswords[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?PermitEmptyPasswords[ \t].*/PermitEmptyPasswords no/g" /etc/ssh/sshd_config || echo "PermitEmptyPasswords no" | sudo tee --append /etc/ssh/sshd_config > /dev/null
+
+# add Vagrant public key
+mkdir -p "${HOME}/.ssh"
+wget "https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub" -O - | - >> "${HOME}/.ssh/authorized_keys" > /dev/null
+
+# make sure permissions and ownership are correct
+chmod -R 0700 "${HOME}/.ssh"
+chmod -R 0600 "${HOME}/.ssh/authorized_keys"
+chown -R "${USER}" "${HOME}/.ssh"
+
+# apply the updates to configuration
+sudo service ssh restart
