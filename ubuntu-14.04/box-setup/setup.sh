@@ -46,7 +46,7 @@ sudo mount -o loop,ro VBoxGuestAdditions_${vb_version}.iso /media/VBoxGuestAddit
 sudo sh /media/VBoxGuestAdditions/VBoxLinuxAdditions.run
 
 # unmount the iso
-sudo unmount /media/VBoxGuestAdditions
+sudo umount /media/VBoxGuestAdditions
 
 # clean up
 sudo rmdir /media/VBoxGuestAdditions
