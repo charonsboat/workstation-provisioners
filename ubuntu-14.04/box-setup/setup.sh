@@ -81,3 +81,6 @@ sudo service ssh restart
 
 
 #### RESTART MACHINE ###########################################################
+
+# restart immediately
+sudo reboot
