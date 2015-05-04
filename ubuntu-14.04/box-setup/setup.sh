@@ -41,7 +41,7 @@ rm VBoxGuestAdditions_${vb_version}.iso
 sudo apt-get install -y openssh-server
 
 # configure ssh
-sudo grep -q "^#\?Port[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?Port[ \t].*/Port 22/g" /etc/ssh/sshd_config || sudo echo "Port 22" >> /etc/ssh/sshd_config
-sudo grep -q "^#\?PubkeyAuthentication[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?PubkeyAuthentication[ \t].*/PubkeyAuthentication yes/g" /etc/ssh/sshd_config || sudo echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config
-sudo grep -q "^#\?AuthorizedKeysFile[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?AuthorizedKeysFile[ \t].*/AuthorizedKeysFile %h\/.ssh\/authorized_keys/g" /etc/ssh/sshd_config || sudo echo "AuthorizedKeysFile %h/.ssh/authorized_keys" >> /etc/ssh/sshd_config
-sudo grep -q "^#\?PermitEmptyPasswords[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?PermitEmptyPasswords[ \t].*/PermitEmptyPasswords no/g" /etc/ssh/sshd_config || sudo echo "PermitEmptyPasswords no" >> /etc/ssh/sshd_config
+sudo grep -q "#\?Port[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?Port[ \t].*/Port 22/g" /etc/ssh/sshd_config || sudo echo "Port 22" >> /etc/ssh/sshd_config
+sudo grep -q "#\?PubkeyAuthentication[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?PubkeyAuthentication[ \t].*/PubkeyAuthentication yes/g" /etc/ssh/sshd_config || sudo echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config
+sudo grep -q "#\?AuthorizedKeysFile[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?AuthorizedKeysFile[ \t].*/AuthorizedKeysFile %h\/.ssh\/authorized_keys/g" /etc/ssh/sshd_config || sudo echo "AuthorizedKeysFile %h/.ssh/authorized_keys" >> /etc/ssh/sshd_config
+sudo grep -q "#\?PermitEmptyPasswords[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?PermitEmptyPasswords[ \t].*/PermitEmptyPasswords no/g" /etc/ssh/sshd_config || sudo echo "PermitEmptyPasswords no" >> /etc/ssh/sshd_config
