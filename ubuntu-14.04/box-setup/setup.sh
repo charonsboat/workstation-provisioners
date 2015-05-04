@@ -1,5 +1,14 @@
 #!/bin/bash
 
+#### COPY ALL STDOUT & STDERR TO LOG FILE ######################################
+
+# Copy stdout to a log file
+exec > >(tee --append ${log})
+
+# Redirect stderr to stdout so it can also be copied to the log file
+exec 2>&1
+
+
 #### ADD USER TO SUDOERS FILE ##################################################
 
 # backup sudoers file
@@ -69,3 +78,6 @@ chown -R "${USER}" "${HOME}/.ssh"
 
 # apply the updates to configuration
 sudo service ssh restart
+
+
+#### RESTART MACHINE ###########################################################
