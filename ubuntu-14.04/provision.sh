@@ -31,7 +31,7 @@ packages=$(read_lst "${conf}/packages.lst")
 
 
 echo ; echo ;
-echo "1. Add Personal Package Archives ========================================"
+echo "==== 1. Add Personal Package Archives ==================================="
 printf %s "${ppas}" | while read -r ppa || [ -n "${ppa}" ]; do
     echo "Adding Package Archive: ${ppa}"
     sudo -E add-apt-repository -y ${ppa} > /dev/null
@@ -45,12 +45,12 @@ sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_re
 
 
 echo ; echo ;
-echo "2. Refresh Package Archives ============================================="
+echo "==== 2. Refresh Package Archives ========================================"
 sudo -E apt-get update -y > /dev/null
 
 
 echo ; echo ;
-echo "3. Install Updates ======================================================"
+echo "==== 3. Install Updates ================================================="
 sudo -E apt-get upgrade -y > /dev/null && sudo -E apt-get dist-upgrade -y > /dev/null
 
 
@@ -89,7 +89,7 @@ sudo ln -s ./.icons /root/.icons
 sudo ln -s ./.themes /root/.themes
 
 
-# Custom binaries ##############################################################
+#### Custom binaries ###########################################################
 
 cd ~/bin
 
