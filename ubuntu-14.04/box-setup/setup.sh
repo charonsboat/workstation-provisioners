@@ -27,7 +27,7 @@ sudo apt-get update -y
 #### INSTALL GUEST ADDITIONS ###################################################
 
 # prepare for guest additions install
-sudo apt-get install -y linux-headers-generic build-essential dkms virtualbox-guest-dkms
+sudo apt-get install -y linux-headers-generic build-essential dkms
 
 # make sure this matches your virtualbox version
 vb_version=4.3.26
