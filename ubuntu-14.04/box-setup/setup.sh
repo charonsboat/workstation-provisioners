@@ -62,10 +62,10 @@ sudo apt-get install -y openssh-server
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.backup
 
 # configure ssh
-sudo grep -q "#\?Port[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?Port[ \t].*/Port 22/g" /etc/ssh/sshd_config || echo "Port 22" | sudo tee --append /etc/ssh/sshd_config > /dev/null
-sudo grep -q "#\?PubkeyAuthentication[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?PubkeyAuthentication[ \t].*/PubkeyAuthentication yes/g" /etc/ssh/sshd_config || echo "PubkeyAuthentication yes" | sudo tee --append /etc/ssh/sshd_config > /dev/null
-sudo grep -q "#\?AuthorizedKeysFile[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?AuthorizedKeysFile[ \t].*/AuthorizedKeysFile %h\/.ssh\/authorized_keys/g" /etc/ssh/sshd_config || echo "AuthorizedKeysFile %h/.ssh/authorized_keys" | sudo tee --append /etc/ssh/sshd_config > /dev/null
-sudo grep -q "#\?PermitEmptyPasswords[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?PermitEmptyPasswords[ \t].*/PermitEmptyPasswords no/g" /etc/ssh/sshd_config || echo "PermitEmptyPasswords no" | sudo tee --append /etc/ssh/sshd_config > /dev/null
+sudo grep -P -q "#?Port[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?Port[ \t].*/Port 22/g" /etc/ssh/sshd_config || echo "Port 22" | sudo tee --append /etc/ssh/sshd_config > /dev/null
+sudo grep -P -q "#?PubkeyAuthentication[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?PubkeyAuthentication[ \t].*/PubkeyAuthentication yes/g" /etc/ssh/sshd_config || echo "PubkeyAuthentication yes" | sudo tee --append /etc/ssh/sshd_config > /dev/null
+sudo grep -P -q "#?AuthorizedKeysFile[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?AuthorizedKeysFile[ \t].*/AuthorizedKeysFile %h\/.ssh\/authorized_keys/g" /etc/ssh/sshd_config || echo "AuthorizedKeysFile %h/.ssh/authorized_keys" | sudo tee --append /etc/ssh/sshd_config > /dev/null
+sudo grep -P -q "#?PermitEmptyPasswords[ \t].*" /etc/ssh/sshd_config && sudo sed -i "s/#\?PermitEmptyPasswords[ \t].*/PermitEmptyPasswords no/g" /etc/ssh/sshd_config || echo "PermitEmptyPasswords no" | sudo tee --append /etc/ssh/sshd_config > /dev/null
 
 # add Vagrant public key
 mkdir -p "${HOME}/.ssh"
