@@ -64,3 +64,11 @@ history -c && history -w
 
 
 ## packaging your box
+
+Now that your box is ready for packaging, all you have to do is make sure your machine is off, and then run the following command:
+
+```
+vagrant package --base ubuntu-desktop-14.04-x64
+```
+
+That's it! You now have a box packaged and ready to use with VirtualBox!
