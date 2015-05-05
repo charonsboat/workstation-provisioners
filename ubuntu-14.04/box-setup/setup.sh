@@ -52,6 +52,9 @@ sudo umount /media/VBoxGuestAdditions
 sudo rmdir /media/VBoxGuestAdditions
 rm VBoxGuestAdditions_${vb_version}.iso
 
+# run the vboxadd setup
+sudo /etc/init.d/vboxadd setup
+
 
 #### SET UP SSH SERVER #########################################################
 
