@@ -15,7 +15,7 @@ exec 2>&1
 sudo cp /etc/sudoers /etc/sudoers.backup
 
 # add current user to sudoers file
-sudo grep -P -q "${USER}[ \t].*" /etc/sudoers && sudo sed -i "s/${USER}[ \t].*/${USER} ALL=(ALL) NOPASSWD: ALL/g" /etc/sudoers || echo "${USER} ALL=(ALL) NOPASSWD: ALL" | sudo tee --append /etc/sudoers
+sudo grep -P -q "${USER}[ \t].*" /etc/sudoers && sudo sed -i "s/${USER}[ \t].*/${USER} ALL=(ALL) NOPASSWD: ALL/g" /etc/sudoers || echo "${USER} ALL=(ALL) NOPASSWD: ALL" | sudo tee --append /etc/sudoers > /dev/null
 
 
 #### RUN SYSTEM UPDATES ########################################################
