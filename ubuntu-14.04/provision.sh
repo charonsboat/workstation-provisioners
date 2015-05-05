@@ -63,7 +63,7 @@ done
 
 
 # Accept the ttf-mscorefonts-installer EULA ahead of time
-debconf-set-selections <<< "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"
+sudo debconf-set-selections <<< "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"
 
 
 # Install other Internet/social packages
