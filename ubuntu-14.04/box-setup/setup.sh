@@ -89,6 +89,9 @@ sudo apt-get autoclean -y
 # remove leftover packages
 sudo apt-get autoremove -y
 
+# clear bash history
+history -c && history -w
+
 
 #### RESTART MACHINE ###########################################################
 
