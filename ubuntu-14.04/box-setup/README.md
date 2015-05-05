@@ -30,12 +30,37 @@ Username:     vagrant
 Password:     vagrant
 ```
 
-After the installation finishes, run ```setup.sh``` as the vagrant user (not with sudo). It will then ask you to confirm your sudo password on the first command that requires it.
+After the installation finishes, run these commands to download and run the script:
 
-As long as the script executes without any major errors, your machine is ready for packaging!
+```bash
+# download the script
+wget https://raw.githubusercontent.com/drmyersii/workstation-provisioners/master/ubuntu-14.04/box-setup/setup.sh -O "${HOME}/setup.sh"
+
+# run the script as the base user
+~/setup.sh
+```
+
+It will then ask you to confirm your sudo password on the first command that requires it. The script outputs all of stdout and stderr to a log file located at ```${HOME}/box-setup.log```As long as the script executes without any major errors, your machine is ready for packaging!
 
 Note: If you get a "permission denied" error when running the setup script, you may need to enable execute permissions on the file like so:
 
 ```bash
 chmod +x setup.sh
 ```
+
+### cleaning up your leftover files
+
+After the setup script runs and the vm reboots, you can remove the two created files with this command:
+
+```bash
+rm "${HOME}/box-setup.log" "${HOME}/setup.sh"
+```
+
+You may want to clear your bash history as well, and you can simply do that with the following commands:
+
+```bash
+history -c && history -w
+```
+
+
+## packaging your box
