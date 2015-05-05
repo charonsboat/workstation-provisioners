@@ -80,6 +80,16 @@ chown -R "${USER}" "${HOME}/.ssh"
 sudo service ssh restart
 
 
+#### CLEAN UP MACHINE FOR PACKAGING ############################################
+
+# clean up apt cache
+sudo apt-get clean -y
+sudo apt-get autoclean -y
+
+# remove leftover packages
+sudo apt-get autoremove -y
+
+
 #### RESTART MACHINE ###########################################################
 
 # restart immediately
