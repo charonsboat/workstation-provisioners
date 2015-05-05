@@ -18,13 +18,10 @@ sudo cp /etc/sudoers /etc/sudoers.backup
 sudo grep -P -q "${USER}[ \t].*" /etc/sudoers && sudo sed -i "s/${USER}[ \t].*/${USER} ALL=(ALL) NOPASSWD: ALL/g" /etc/sudoers || echo "${USER} ALL=(ALL) NOPASSWD: ALL" | sudo tee --append /etc/sudoers > /dev/null
 
 
-#### RUN SYSTEM UPDATES ########################################################
+#### UPDATE SYSTEM PACKAGES ####################################################
 
 # update the system
 sudo apt-get update -y
-
-# install updates
-sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y
 
 
 #### INSTALL GUEST ADDITIONS ###################################################
@@ -54,6 +51,13 @@ rm VBoxGuestAdditions_${vb_version}.iso
 
 # run the vboxadd setup
 sudo /etc/init.d/vboxadd setup
+
+
+#### RUN SYSTEM UPDATES ########################################################
+
+# install updates
+# NOTE: this HAS to be run after the guest additions installation
+sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y
 
 
 #### SET UP SSH SERVER #########################################################
