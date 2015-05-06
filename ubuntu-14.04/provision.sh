@@ -71,6 +71,10 @@ CHROMESTABLEFILE=google-chrome-stable_current_amd64.deb
 wget https://dl.google.com/linux/direct/$CHROMESTABLEFILE | sudo -E dpkg -i $CHROMESTABLEFILE > /dev/null
 rm $CHROMESTABLEFILE
 
+# Install updated version of vagrant
+vagrant_version=1.7.2
+wget https://dl.bintray.com/mitchellh/vagrant/vagrant_${vagrant_version}_x86_64.deb | sudo -E dpkg -i vagrant_${vagrant_version}_x86_64.deb > /dev/null
+rm vagrant_${vagrant_version}_x86_64.deb
 
 # Create commonly required directories
 cd ~/
