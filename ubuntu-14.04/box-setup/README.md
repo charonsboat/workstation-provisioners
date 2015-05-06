@@ -1,6 +1,6 @@
 # vagrant box setup (ubuntu-desktop-14.04-x64)
 
-How to set up a base box with Ubuntu Desktop for use with Vagrant.
+How to set up a [base box with Ubuntu Desktop](https://atlas.hashicorp.com/drmyersii/boxes/ubuntu-desktop-14.04-x64) for use with Vagrant.
 
 
 ## getting the base image
