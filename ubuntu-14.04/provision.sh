@@ -100,15 +100,11 @@ cd ~/bin
 # Android
 
 ANDROIDSTUDIODOWNLOAD=android-studio-ide-135.1740770-linux.zip
-ANDROIDSDKDOWNLOAD=android-sdk_r24.1.2-linux.tgz
 
 wget https://dl.google.com/dl/android/studio/ide-zips/1.1.0/$ANDROIDSTUDIODOWNLOAD > /dev/null
 unzip $ANDROIDSTUDIODOWNLOAD > /dev/null
 
-wget http://dl.google.com/android/$ANDROIDSDKDOWNLOAD > /dev/null
-tar -zxvf $ANDROIDSDKDOWNLOAD > /dev/null
-
-rm $ANDROIDSTUDIODOWNLOAD $ANDROIDSDKDOWNLOAD
+rm $ANDROIDSTUDIODOWNLOAD
 
 # symlink the studio binary into the path as androidstudio
 ln -s ./android-studio/bin/studio.sh ./androidstudio
