@@ -39,6 +39,7 @@ done
 
 
 echo "Adding Package Archive: VirtualBox"
+
 # Grab the latest version of Virtualbox from the Oracle repository.
 wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O - | sudo apt-key add -
 sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib' >> /etc/apt/sources.list.d/virtualbox.list"
@@ -66,16 +67,6 @@ done
 sudo debconf-set-selections <<< "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"
 
 
-# Install other Internet/social packages
-CHROMESTABLEFILE=google-chrome-stable_current_amd64.deb
-wget https://dl.google.com/linux/direct/$CHROMESTABLEFILE | sudo -E dpkg -i $CHROMESTABLEFILE > /dev/null
-rm $CHROMESTABLEFILE
-
-# Install updated version of vagrant
-vagrant_version=1.7.2
-wget https://dl.bintray.com/mitchellh/vagrant/vagrant_${vagrant_version}_x86_64.deb | sudo -E dpkg -i vagrant_${vagrant_version}_x86_64.deb > /dev/null
-rm vagrant_${vagrant_version}_x86_64.deb
-
 # Create commonly required directories
 cd ~/
 mkdir -p "bin" "Projects" ".icons" ".themes"
@@ -97,29 +88,63 @@ sudo ln -s ./.themes /root/.themes
 
 cd ~/bin
 
-# Android
 
-ANDROIDSTUDIODOWNLOAD=android-studio-ide-135.1740770-linux.zip
+# Google Chrome
 
-wget https://dl.google.com/dl/android/studio/ide-zips/1.1.0/$ANDROIDSTUDIODOWNLOAD > /dev/null
-unzip $ANDROIDSTUDIODOWNLOAD > /dev/null
+# download the package
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O googlechrome.deb > /dev/null
 
-rm $ANDROIDSTUDIODOWNLOAD
+# install the package
+sudo -E dpkg -i googlechrome.deb > /dev/null
+
+# clean up
+rm googlechrome.deb
+
+
+# Vagrant
+
+# set the version number for easier updating
+vagrant_version=1.7.2
+
+# download updated version of the package
+wget https://dl.bintray.com/mitchellh/vagrant/vagrant_${vagrant_version}_x86_64.deb -O vagrant.deb > /dev/null
+
+# install the package
+sudo -E dpkg -i vagrant.deb > /dev/null
+
+# clean up
+rm vagrant.deb
+
+
+# Android Studio
+
+# set the version numbers for easier updating
+androidstudio_version=1.2.0.12
+androidstudio_file_version=141.1890965
+
+# download the zipped application
+wget https://dl.google.com/dl/android/studio/ide-zips/${androidstudio_version}/android-studio-ide-${androidstudio_file_version}-linux.zip -O androidstudio.zip > /dev/null
+
+# extract the files
+unzip androidstudio.zip > /dev/null
 
 # symlink the studio binary into the path as androidstudio
 ln -s ./android-studio/bin/studio.sh ./androidstudio
 
+# clean up
+rm androidstudio.zip
 
-# Visual Studio Code
+
+# Visual Studio - Code Edition
 
 # download the zipped application
-wget http://go.microsoft.com/fwlink/?LinkID=534108 -O vs_code.zip
+wget http://go.microsoft.com/fwlink/?LinkID=534108 -O visualstudio-code.zip > /dev/null
 
 # extract the files into a new directory
-unzip vs_code.zip -d ./visual-studio-code
+unzip visualstudio-code.zip -d ./visual-studio-code > /dev/null
 
 # symlink the binary into the path
 ln -s ./visual-studio-code/Code ./visualstudio-code
 
 # clean up
-rm vs_code.zip
+rm visualstudio-code.zip
