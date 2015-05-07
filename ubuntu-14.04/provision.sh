@@ -110,7 +110,20 @@ tar -zxvf $ANDROIDSDKDOWNLOAD > /dev/null
 
 rm $ANDROIDSTUDIODOWNLOAD $ANDROIDSDKDOWNLOAD
 
-# Setup symlinks to make applications executable from path (Ubuntu ~/.profile
-# adds ~/bin to path if it exists.
-
+# symlink the studio binary into the path as androidstudio
 ln -s ./android-studio/bin/studio.sh ./androidstudio
+
+
+# Visual Studio Code
+
+# download the zipped application
+wget http://go.microsoft.com/fwlink/?LinkID=534108 -O vs_code.zip
+
+# extract the files into a new directory
+unzip vs_code.zip -d ./visual-studio-code
+
+# symlink the binary into the path
+ln -s ./visual-studio-code/Code ./visualstudio-code
+
+# clean up
+rm vs_code.zip
