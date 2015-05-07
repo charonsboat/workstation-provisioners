@@ -118,7 +118,7 @@ rm vagrant.deb
 
 # Android Studio
 
-# set the version numbers for easier updating
+# set the version numbers for easier updating. updated version numbers can be found here: https://developer.android.com/sdk/index.html#Other
 androidstudio_version=1.2.0.12
 androidstudio_file_version=141.1890965
 
