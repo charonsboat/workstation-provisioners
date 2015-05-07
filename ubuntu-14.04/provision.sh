@@ -42,7 +42,7 @@ echo "Adding Package Archive: VirtualBox"
 
 # Grab the latest version of Virtualbox from the Oracle repository.
 wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O - | sudo apt-key add -
-sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib' >> /etc/apt/sources.list.d/virtualbox.list"
+echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" | sudo tee --append /etc/apt/sources.list.d/virtualbox.list
 
 
 echo ; echo ;
