@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-sudo apt-get install -qq -y font-manager cabextract > /dev/null
+sudo apt-get install -qq font-manager cabextract > /dev/null
 
 set -e
 set -x

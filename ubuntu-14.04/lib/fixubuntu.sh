@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 GS="/usr/bin/gsettings"
 CCUL="com.canonical.Unity.lenses"
@@ -19,7 +19,7 @@ MIN=`echo $V'>'12.10 | bc -l`
 FIXED_VER=15.04
 MAX=`echo $FIXED_VER'>'$V | bc -l`
 
-if [[ $MIN -eq 0 || $MAX -eq 0 ]]; then 
+if [[ $MIN -eq 0 || $MAX -eq 0 ]]; then
   echo "Good news! This version of Ubuntu is not known to invade your privacy."
   exit 0    # The script should exit if Ubuntu version is outside of range
 fi
