@@ -8,20 +8,18 @@ This provisioning script has been forked from [xcjs's ubuntu 14.04 provisioning 
 Download and run the ```provision.sh``` script like so:
 
 ```bash
-wget https://raw.githubusercontent.com/drmyersii/workstation-provisioners/master/ubuntu-14.04/consolas.sh
-wget https://raw.githubusercontent.com/drmyersii/workstation-provisioners/master/ubuntu-14.04/fixubuntu.sh
-wget https://raw.githubusercontent.com/drmyersii/workstation-provisioners/master/ubuntu-14.04/provision.sh | bash
-```
-
-or if you have Git:
-
-```bash
 git clone https://github.com/drmyersii/workstation-provisioners.git
 cd ubuntu-14.04
 ./provision.sh
 ```
 
 It will prompt you for your sudo password.
+
+Note: If you get a "permission denied" error when running the provisioning script, you may need to enable execute permissions on the file like so:
+
+```bash
+chmod +x setup.sh
+```
 
 
 ## development
