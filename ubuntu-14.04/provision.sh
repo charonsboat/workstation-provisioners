@@ -1,12 +1,13 @@
 #!/bin/bash
 
 
-log="./provision.log"
-# Copy STDOUT to a log
-exec > >(tee -a ${log})
-# Include STDERR to the same log
+# Copy stdout to a log file
+exec > >(tee --append "${HOME}/box-setup.log")
+
+# Redirect stderr to stdout so it can also be copied to the log file
 exec 2>&1
 
+# suppress prompts
 export DEBIAN_FRONTEND=noninteractive
 
 # using a tmp dir to store any downloaded files or logs
@@ -16,13 +17,13 @@ tmp="/var/tmp"
 lib="./lib"
 conf="./conf"
 
-# Execute the Fix Ubuntu script to ensure additional privacy.
+# execute the fix ubuntu script to ensure additional privacy
 ${lib}/fixubuntu.sh
 
-# Retrieve and extract Consolas because it is my favorite programming font.
+# retrieve and extract consolas because it is my favorite programming font
 ${lib}/consolas.sh
 
-# load lst-reader function, read_lst()
+# load utility functions
 source ${lib}/utilities.sh
 
 
@@ -39,8 +40,7 @@ done
 
 
 echo "Adding Package Archive: VirtualBox"
-
-# Grab the latest version of Virtualbox from the Oracle repository.
+# grab the latest version of virtualbox from the oracle repository.
 wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O - | sudo apt-key add -
 echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" | sudo tee --append /etc/apt/sources.list.d/virtualbox.list
 
@@ -63,22 +63,25 @@ printf %s "${packages}" | while read -r package || [ -n "${package}" ]; do
 done
 
 
-# Accept the ttf-mscorefonts-installer EULA ahead of time
+# accept the ttf-mscorefonts-installer EULA ahead of time
 sudo debconf-set-selections <<< "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"
 
 
-# Create commonly required directories
+# create commonly required directories
 cd ~/
 mkdir -p "bin" "Projects" ".icons" ".themes"
 
+# download icon packs
 cd ~/.icons
 git clone https://github.com/NitruxSA/flattr-icons.git
 git clone https://github.com/xcjs/flattr-dark.git
 
+# download themes
 cd ~/.themes
 git clone https://github.com/wfpaisa/Plane-Gtk3.git
 git clone https://github.com/wfpaisa/Plane-Gtk3-White.git
 
+# symlink the themes and icon packs into root directories
 cd ~/
 sudo ln -s ./.icons /root/.icons
 sudo ln -s ./.themes /root/.themes
