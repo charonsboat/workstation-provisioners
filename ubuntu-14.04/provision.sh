@@ -32,18 +32,6 @@ scripts="./scripts"
 . ${scripts}/install.sh
 
 
-ppas=$(read_lst "${scripts}/ppas.lst")
-packages=$(read_lst "${scripts}/packages.lst")
-
-
-echo ; echo ;
-echo "==== 1. Add Personal Package Archives ==================================="
-printf %s "${ppas}" | while read -r ppa || [ -n "${ppa}" ]; do
-    echo "Adding Package Archive: ${ppa}"
-    sudo -E add-apt-repository -y ${ppa} > /dev/null
-done
-
-
 echo "Adding Package Archive: VirtualBox"
 # grab the latest version of virtualbox from the oracle repository.
 wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O - | sudo apt-key add -
@@ -58,14 +46,6 @@ sudo -E apt-get update -y > /dev/null
 echo ; echo ;
 echo "==== 3. Install Updates ================================================="
 sudo -E apt-get upgrade -y > /dev/null && sudo -E apt-get dist-upgrade -y > /dev/null
-
-
-echo ; echo ;
-echo "4. Install Selected Packages ============================================"
-printf %s "${packages}" | while read -r package || [ -n "${package}" ]; do
-    echo "Installing Package: ${package}"
-    sudo -E apt-get install -y ${package} > /dev/null
-done
 
 
 # accept the ttf-mscorefonts-installer EULA ahead of time
