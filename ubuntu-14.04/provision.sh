@@ -14,21 +14,26 @@ export DEBIAN_FRONTEND=noninteractive
 # /var/tmp files are supposed to persist even on reboot
 tmp="/var/tmp"
 
+helpers="./helpers"
 lib="./lib"
-conf="./conf"
+scripts="./scripts"
+
 
 # execute the fix ubuntu script to ensure additional privacy
-${lib}/fixubuntu.sh
+. ${lib}/fixubuntu.sh
 
 # retrieve and extract consolas because it is my favorite programming font
-${lib}/consolas.sh
+. ${lib}/consolas.sh
 
 # load utility functions
-source ${lib}/utilities.sh
+. ${helpers}/utilities.sh
+
+# run the package installation script
+. ${scripts}/install.sh
 
 
-ppas=$(read_lst "${conf}/ppas.lst")
-packages=$(read_lst "${conf}/packages.lst")
+ppas=$(read_lst "${scripts}/ppas.lst")
+packages=$(read_lst "${scripts}/packages.lst")
 
 
 echo ; echo ;
