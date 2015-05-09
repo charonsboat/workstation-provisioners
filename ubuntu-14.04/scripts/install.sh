@@ -29,6 +29,7 @@ packages=(
     openssh-server
 
     # Development Tools
+    android-studio
     atom
     brackets
     build-essential
@@ -46,6 +47,7 @@ packages=(
     vagrant
     vim
     virtualbox-4.3
+    visual-studio-code
     zeal
 
     # Graphics
@@ -59,6 +61,7 @@ packages=(
 
     # Other Utilities
     conduit
+    google-chrome
     keepassx
     p7zip-full
     remmina
