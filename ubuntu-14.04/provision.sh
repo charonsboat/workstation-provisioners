@@ -28,24 +28,19 @@ scripts="./scripts"
 # load utility functions
 . ${helpers}/utilities.sh
 
-# run the package installation script
-. ${scripts}/install.sh
 
-
-echo "Adding Package Archive: VirtualBox"
-# grab the latest version of virtualbox from the oracle repository.
-wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O - | sudo apt-key add -
-echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" | sudo tee --append /etc/apt/sources.list.d/virtualbox.list
-
-
+# update system packages
 echo ; echo ;
 echo "==== 2. Refresh Package Archives ========================================"
-sudo -E apt-get update -y > /dev/null
+sudo -E apt-get update -qq > /dev/null
 
-
+# upgrade system packages
 echo ; echo ;
 echo "==== 3. Install Updates ================================================="
-sudo -E apt-get upgrade -y > /dev/null && sudo -E apt-get dist-upgrade -y > /dev/null
+sudo -E apt-get upgrade -qq > /dev/null && sudo -E apt-get dist-upgrade -y > /dev/null
+
+# run the package installation script
+. ${scripts}/install.sh
 
 
 # accept the ttf-mscorefonts-installer EULA ahead of time
@@ -53,20 +48,21 @@ sudo debconf-set-selections <<< "ttf-mscorefonts-installer msttcorefonts/accepte
 
 
 # create commonly required directories
-cd ~/
+cd "${HOME}"
 mkdir -p "bin" "Projects" ".icons" ".themes"
 
 # download icon packs
-cd ~/.icons
+cd ./.icons
 git clone https://github.com/NitruxSA/flattr-icons.git
 git clone https://github.com/xcjs/flattr-dark.git
+cd ..
 
 # download themes
-cd ~/.themes
+cd ./.themes
 git clone https://github.com/wfpaisa/Plane-Gtk3.git
 git clone https://github.com/wfpaisa/Plane-Gtk3-White.git
+cd ..
 
 # symlink the themes and icon packs into root directories
-cd ~/
 sudo ln -s ./.icons /root/.icons
 sudo ln -s ./.themes /root/.themes

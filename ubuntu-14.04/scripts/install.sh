@@ -46,7 +46,7 @@ packages=(
     subversion
     vagrant
     vim
-    virtualbox-4.3
+    virtualbox
     visual-studio-code
     zeal
 
