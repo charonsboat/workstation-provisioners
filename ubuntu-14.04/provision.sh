@@ -29,16 +29,15 @@ scripts="./scripts"
 . ${helpers}/utilities.sh
 
 
+print_line "1. Install System Updates #########################################"
 # update system packages
-echo ; echo ;
-echo "==== 2. Refresh Package Archives ========================================"
 sudo -E apt-get update -qq > /dev/null
 
 # upgrade system packages
-echo ; echo ;
-echo "==== 3. Install Updates ================================================="
 sudo -E apt-get upgrade -qq > /dev/null && sudo -E apt-get dist-upgrade -y > /dev/null
 
+
+print_line "2. Install Packages ###############################################"
 # run the package installation script
 . ${scripts}/install.sh
 
