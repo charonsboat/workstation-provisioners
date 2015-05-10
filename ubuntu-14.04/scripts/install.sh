@@ -71,5 +71,5 @@ packages=(
 
 for i in ${packages[@]}
 do
-    install_package . ${i}
+    install_package ${scripts} ${i}
 done

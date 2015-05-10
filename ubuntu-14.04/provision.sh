@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 
+current_directory=$(pwd)
+
 # Copy stdout to a log file
-exec > >(tee --append "${HOME}/box-setup.log")
+exec > >(tee --append "${current_directory}/box-setup.log")
 
 # Redirect stderr to stdout so it can also be copied to the log file
 exec 2>&1
@@ -14,19 +16,22 @@ export DEBIAN_FRONTEND=noninteractive
 # /var/tmp files are supposed to persist even on reboot
 tmp="/var/tmp"
 
-helpers="./helpers"
-lib="./lib"
-scripts="./scripts"
+helpers="${current_directory}/helpers"
+lib="${current_directory}/lib"
+scripts="${current_directory}/scripts"
 
 
 # execute the fix ubuntu script to ensure additional privacy
-. ${lib}/fixubuntu.sh
+. ${lib}/fixubuntu.sh > /dev/null
+cd ${current_directory}
 
 # retrieve and extract consolas because it is my favorite programming font
-. ${lib}/consolas.sh
+. ${lib}/consolas.sh > /dev/null
+cd ${current_directory}
 
 # load utility functions
-. ${helpers}/utilities.sh
+. ${helpers}/utilities.sh > /dev/null
+cd ${current_directory}
 
 
 print_line "1. Install System Updates #########################################"
@@ -38,16 +43,16 @@ sudo -E apt-get upgrade -qq > /dev/null && sudo -E apt-get dist-upgrade -y > /de
 
 
 print_line "2. Install Packages ###############################################"
-# run the package installation script
-. ${scripts}/install.sh
-
-
 # accept the ttf-mscorefonts-installer EULA ahead of time
-sudo debconf-set-selections <<< "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"
+sudo -E debconf-set-selections <<< "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"
+
+# run the package installation script
+. ${scripts}/install.sh > /dev/null
+cd ${current_directory}
 
 
 # create commonly required directories
-cd "${HOME}"
+cd ${HOME}
 mkdir -p "bin" "Projects" ".icons" ".themes"
 
 # download icon packs

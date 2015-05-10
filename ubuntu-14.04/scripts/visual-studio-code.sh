@@ -5,6 +5,7 @@
 echo "Installing Package: visual-studio-code"
 
 # make sure we're in the bin directory
+mkdir -p "${HOME}/bin"
 cd "${HOME}/bin"
 
 # download the zipped application

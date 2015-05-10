@@ -5,6 +5,7 @@
 echo "Installing Package: android-studio"
 
 # make sure we're in the bin directory
+mkdir -p "${HOME}/bin"
 cd "${HOME}/bin"
 
 # set the version numbers for easier updating. updated version numbers can be found here: https://developer.android.com/sdk/index.html#Other
