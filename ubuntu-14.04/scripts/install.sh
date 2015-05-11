@@ -61,6 +61,7 @@ packages=(
 
     # Other Utilities
     conduit
+    consolas
     google-chrome
     keepassx
     p7zip-full

@@ -25,10 +25,6 @@ scripts="${current_directory}/scripts"
 . ${lib}/fixubuntu.sh > /dev/null
 cd ${current_directory}
 
-# retrieve and extract consolas because it is my favorite programming font
-. ${lib}/consolas.sh > /dev/null
-cd ${current_directory}
-
 # load utility functions
 . ${helpers}/utilities.sh > /dev/null
 cd ${current_directory}
