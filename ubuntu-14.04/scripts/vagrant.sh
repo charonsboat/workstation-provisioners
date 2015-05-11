@@ -18,3 +18,7 @@ sudo -E dpkg -i vagrant.deb > /dev/null
 
 # clean up
 rm vagrant.deb
+
+
+# Vagrant Plugin: vagrant-linode
+vagrant plugin install vagrant-linode
