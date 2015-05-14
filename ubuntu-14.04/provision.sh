@@ -51,6 +51,9 @@ cd ${current_directory}
 cd ${HOME}
 mkdir -p "bin" "Projects" ".icons" ".themes"
 
+# add bin to path
+echo "export PATH=${PATH}:${HOME}/bin" | tee --append "${HOME}/.bashrc"
+
 # download icon packs
 cd ./.icons
 git clone https://github.com/NitruxSA/flattr-icons.git
