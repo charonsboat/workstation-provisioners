@@ -22,7 +22,7 @@ unzip android-studio.zip > /dev/null
 mv ./android-studio ./android-studio-bin
 
 # symlink the studio binary into the path as android-studio
-ln -s ./android-studio/bin/studio.sh ./android-studio
+ln -s ./android-studio-bin/bin/studio.sh ./android-studio
 
 # clean up
 rm android-studio.zip
