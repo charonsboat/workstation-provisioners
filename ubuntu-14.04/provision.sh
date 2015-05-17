@@ -69,3 +69,8 @@ cd ..
 # symlink the themes and icon packs into root directories
 sudo ln -s ./.icons /root/.icons
 sudo ln -s ./.themes /root/.themes
+
+# set vim as the default editor
+cp ~/.bashrc ~/.bashrc.backup
+echo 'export VISUAL="vim"' | tee --append "${HOME}/.bashrc"
+echo 'export EDITOR="${VISUAL}"' | tee --append "${HOME}/.bashrc"
