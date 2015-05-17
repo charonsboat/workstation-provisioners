@@ -52,7 +52,7 @@ cd ${HOME}
 mkdir -p "bin" "Projects" ".icons" ".themes"
 
 # add bin to path
-echo "export PATH=${PATH}:${HOME}/bin" | tee --append "${HOME}/.bashrc"
+echo 'export PATH=${PATH}:${HOME}/bin' | tee --append "${HOME}/.bashrc"
 
 # download icon packs
 cd ./.icons
