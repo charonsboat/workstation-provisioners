@@ -1,23 +1,43 @@
-# vagrant box setup
+# vagrant box setup (windows-8.1-x64)
 
-How to set up a Windows Guest for use in Vagrant.
+How to set up a [base box with Windows Professional]() for use with Vagrant.
 
 
 ## getting the base image
 
-Download evaluation image from [TechNet](http://www.microsoft.com/en-us/evalcenter). Click the "Evaluate Now" dropdown and choose the OS version you want to use.
+Download the evaluation image from [TechNet](http://www.microsoft.com/en-us/evalcenter). Click the "Evaluate Now" dropdown and choose the OS version you want to use.
+
+Alternatively, you can use your own copy of Windows if you have a license.
 
 
 ## creating the virtual machine
 
 ### VirtualBox:
 
-Create a new virtual machine with the downloaded ```.iso``` file.
+Create a new virtual machine for Windows:
+
+- Give it a descriptive name. E.g. windows-8.1-x64
+- Choose the default amount of memory. E.g. 2048 MB
+- Create a new virtual hard drive (.vmdk). Choose dynamically sized and set the max size. E.g. 48 GB
 
 
-## setting up the Windows basics
+## preparing the base image
 
-- Enter a PC name. I am using "vagrant-box" as my PC name (the username can not be the same as the PC name).
-- When prompted to sign in, click "Create New Account", and then click "Sign In Without A Microsoft Account".
-- Enter "vagrant" as the username and the password of the new account. You will have to enter a hint as well, and you can just set it to anything (as long as it doesn't contain the password).
-- Install Guest Additions (VirtualBox only)
+On first boot, you will have to select the newly downloaded iso. Use the following information to set up the machine:
+
+```
+Machine Name: vagrant-box
+Username:     vagrant
+Password:     vagrant
+Hint:         hint
+```
+
+After the installation finishes, install Guest Additions, run the Windows Updates, and then run the setup script like so:
+
+```powershell
+# download the script
+wget https://raw.githubusercontent.com/drmyersii/workstation-provisioners/master/windows-8.1/box-setup/setup.ps1
+
+# run the script
+./setup.ps1
+```
