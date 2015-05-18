@@ -30,7 +30,7 @@ sudo apt-get update -y
 sudo apt-get install -y linux-headers-generic build-essential dkms
 
 # make sure this matches your virtualbox version
-vb_version=4.3.26
+vb_version=4.3.28
 
 # download guest additions iso
 wget http://download.virtualbox.org/virtualbox/${vb_version}/VBoxGuestAdditions_${vb_version}.iso
