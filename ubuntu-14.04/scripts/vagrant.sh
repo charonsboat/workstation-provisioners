@@ -22,3 +22,6 @@ rm vagrant.deb
 
 # Vagrant Plugin: vagrant-linode
 vagrant plugin install vagrant-linode
+
+# Vagrant Plugin: vagrant-digitalocean
+vagrant plugin install vagrant-digitalocean
