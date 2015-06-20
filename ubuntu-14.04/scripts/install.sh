@@ -63,6 +63,7 @@ packages=(
     conduit
     consolas
     google-chrome
+    grive grive-tools
     keepassx
     p7zip-full
     remmina
