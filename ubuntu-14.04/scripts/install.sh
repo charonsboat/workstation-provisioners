@@ -63,6 +63,7 @@ packages=(
     conduit
     consolas
     google-chrome
+    insync
     keepassx
     p7zip-full
     remmina
