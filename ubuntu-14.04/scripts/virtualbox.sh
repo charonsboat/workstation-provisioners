@@ -5,6 +5,7 @@
 echo "Installing Package: virtualbox"
 
 # make sure we're in the bin directory
+mkdir -p "${HOME}/bin"
 cd "${HOME}/bin"
 
 # set the version number for easier updating
