@@ -35,13 +35,11 @@ packages=(
     build-essential
     codeblocks
     filezilla
-    git
-    git-svn
+    git git-svn hub
     meld
     monodevelop
     monodoc-manual
-    openjdk-7-jdk
-    openjdk-7-jre
+    openjdk-7-jdk openjdk-7-jre
     sublime-text
     subversion
     vagrant
