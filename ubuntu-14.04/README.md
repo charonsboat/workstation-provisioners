@@ -5,7 +5,7 @@ This provisioning script will install everything in the ```install.sh``` file un
 
 ## usage
 
-Download and run the ```provision.sh``` script like so:
+Download the repository and run the ```provision.sh``` script like so:
 
 ```bash
 git clone https://github.com/drmyersii/workstation-provisioners.git
