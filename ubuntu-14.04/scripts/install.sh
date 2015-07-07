@@ -65,6 +65,7 @@ packages=(
     keepassx
     p7zip-full
     remmina
+    typecatcher
 
 )
 
