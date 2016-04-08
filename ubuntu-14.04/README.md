@@ -1,6 +1,6 @@
 # ubuntu 14.04
 
-This provisioning script will install everything in the ```install.sh``` file under the scripts directory. If any of the applications in the install script have a corresponding script file, that script will be run instead of just using apt-get. This provisioning script was originally forked from [xcjs's ubuntu 14.04 provisioning script](https://github.com/xcjs/workstation-provision/tree/master/ubuntu-14.04) but has changed tremendously.
+This provisioning script will install everything in the ```install.sh``` file under the scripts directory. If any of the applications in the install script have a corresponding script file, that script will be run instead of just using apt-get.
 
 
 ## usage
