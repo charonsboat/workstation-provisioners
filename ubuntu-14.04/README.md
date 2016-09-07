@@ -31,3 +31,7 @@ git clone https://github.com/drmyersii/workstation-provisioners.git
 cd ubuntu-14.04
 vagrant up
 ```
+
+## base box setup
+
+For information or instructions related to the base box for this environment, check out [@drm2/vagrant-boxes](https://github.com/drm2/vagrant-boxes).
